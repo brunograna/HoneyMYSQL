@@ -18,7 +18,7 @@ public function __construct() {
   $this->setDatabase("DatabaseName");
 }
 ```
-After that the HoneyMYSQL LIB is configured.
+After that the HoneyMYSQL library is configured.
 
 ## Insert Data Example
 
