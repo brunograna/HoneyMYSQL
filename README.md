@@ -23,14 +23,7 @@ After that the HoneyMYSQL library is configured.
 ## Insert Data Example
 
 ```
-<?php
   require_once('HoneyMYSQL');
   $honey = new HoneyMYSQL();
-  if($honey->insert('user', array('login','password'),array('admin','1234'))){
-    echo 'Success';
-  }else{
-    echo 'Failure';
-  }
-
-?>
+  $honey->insert('user', array('login','password'),array('admin','1234'));
 ```
