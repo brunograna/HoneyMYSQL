@@ -171,6 +171,55 @@ class HoneyMYSQL{
         }
     }
 
+    /**
+     * This functions select data with key search from a MYSQL database
+     * 
+     * Insert_nr - Should pass ($tablename, $attributes, $values)  
+     * 
+     * $tablename - Name of the table.
+     * 
+     * $attributes - Array with the attributes name.
+     * 
+     * $values - Array with values of the attributes.    
+     * 
+     * Return TRUE = Success
+     * 
+     * Return FALSE = Failure on query or The data are already in database
+     * 
+     * * The values should be in the same sequence of the attributes name  
+     */ 
+    public function select_where(String $tablename,array $attributes,array $values):bool{        
+        if ($this->connect->conectar()) {
+            //Connected with database   
+            //Here the SELECT query are made
+            $sql = "SELECT ";
+            //Mount the attributes
+            foreach ($attributes as $key => $value) {                
+                if($key == count($attributes) - 1){
+                    $sql = $sql."`".$value."`";
+                }else{
+                    $sql = $sql."`".$value."`, ";
+                }                
+            }      
+            $sql = $sql." FROM `".$tablename."` WHERE ";     
+            //Mount the values of the attributes
+            foreach ($values as $key => $value) {                
+                if($key == count($attributes) - 1){
+                    $sql = $sql." `".$attributes[$key]."` = '".$value."'";
+                }else{
+                    $sql = $sql." `".$attributes[$key]."` = '".$value."' and";
+                } 
+            }
+            $sql = $sql." ";       
+            //Verify with exist this data on database 
+            $result = $this->connect->getConn()->query($sql);
+            echo $sql;
+            
+        }else{
+            return false;
+        }
+    }
+
 
 
 }
