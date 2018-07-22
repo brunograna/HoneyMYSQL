@@ -11,8 +11,10 @@ To configure HoneyMYSQL you just need to know this settings:
 After knowing that you just have to put all these information in the __constructor of 'Connection.php' file.
 
 ```
-$this->setServername("localhost");
-$this->setUsername("Username");
-$this->setPassword("Password");
-$this->setDatabase("DatabaseName");
+public function __construct() {
+  $this->setServername("localhost");
+  $this->setUsername("Username");
+  $this->setPassword("Password");
+  $this->setDatabase("DatabaseName");
+}
 ```
