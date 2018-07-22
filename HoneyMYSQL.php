@@ -172,9 +172,9 @@ class HoneyMYSQL{
     }
 
     /**
-     * This functions select data with key search from a MYSQL database
+     * This functions select all the data from a MYSQL database
      * 
-     * Insert_nr - Should pass ($tablename, $attributes, $values)  
+     * Select_all - Should pass ($tablename, $attributes, $values)  
      * 
      * $tablename - Name of the table.
      * 
@@ -182,26 +182,19 @@ class HoneyMYSQL{
      * 
      * $values - Array with values of the attributes.    
      * 
-     * Return TRUE = Success
+     * * Return array with the results in case of success
      * 
-     * Return FALSE = Failure on query or The data are already in database
+     * 
+     * * Return 0 in case of not success
+     * 
      * 
      * * The values should be in the same sequence of the attributes name  
      */ 
-    public function select_where(String $tablename,array $attributes,array $values):bool{        
+    public function select_all(String $tablename,array $attributes,array $values):array{        
         if ($this->connect->conectar()) {
             //Connected with database   
             //Here the SELECT query are made
-            $sql = "SELECT ";
-            //Mount the attributes
-            foreach ($attributes as $key => $value) {                
-                if($key == count($attributes) - 1){
-                    $sql = $sql."`".$value."`";
-                }else{
-                    $sql = $sql."`".$value."`, ";
-                }                
-            }      
-            $sql = $sql." FROM `".$tablename."` WHERE ";     
+            $sql = "SELECT * FROM `".$tablename."` WHERE ";                          
             //Mount the values of the attributes
             foreach ($values as $key => $value) {                
                 if($key == count($attributes) - 1){
@@ -214,9 +207,18 @@ class HoneyMYSQL{
             //Verify with exist this data on database 
             $result = $this->connect->getConn()->query($sql);
             echo $sql;
-            
+            if ($result->num_rows > 0) {
+                //Fill the array
+                while ($row = $result->fetch_assoc()) {
+                    # code...
+                    $array[] = $row;
+                }
+                return $array;
+            }else{
+                return array(0);
+            }
         }else{
-            return false;
+            return array(0);
         }
     }
 
