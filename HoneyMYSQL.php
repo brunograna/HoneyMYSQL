@@ -171,6 +171,57 @@ class HoneyMYSQL{
         }
     }
 
+    /**
+     * This functions select all the data from a MYSQL database
+     * 
+     * Select_all - Should pass ($tablename, $attributes, $values)  
+     * 
+     * $tablename - Name of the table.
+     * 
+     * $attributes - Array with the attributes name.
+     * 
+     * $values - Array with values of the attributes.    
+     * 
+     * * Return array with the results in case of success
+     * 
+     * 
+     * * Return 0 in case of not success
+     * 
+     * 
+     * * The values should be in the same sequence of the attributes name  
+     */ 
+    public function select_all(String $tablename,array $attributes,array $values):array{        
+        if ($this->connect->conectar()) {
+            //Connected with database   
+            //Here the SELECT query are made
+            $sql = "SELECT * FROM `".$tablename."` WHERE ";                          
+            //Mount the values of the attributes
+            foreach ($values as $key => $value) {                
+                if($key == count($attributes) - 1){
+                    $sql = $sql." `".$attributes[$key]."` = '".$value."'";
+                }else{
+                    $sql = $sql." `".$attributes[$key]."` = '".$value."' and";
+                } 
+            }
+            $sql = $sql." ";       
+            //Verify with exist this data on database 
+            $result = $this->connect->getConn()->query($sql);
+            echo $sql;
+            if ($result->num_rows > 0) {
+                //Fill the array
+                while ($row = $result->fetch_assoc()) {
+                    # code...
+                    $array[] = $row;
+                }
+                return $array;
+            }else{
+                return array(0);
+            }
+        }else{
+            return array(0);
+        }
+    }
+
 
 
 }
