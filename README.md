@@ -18,3 +18,19 @@ public function __construct() {
   $this->setDatabase("DatabaseName");
 }
 ```
+After that the HoneyMYSQL LIB is configured.
+
+##INSERT Example
+
+```
+<?php
+  require_once('HoneyMYSQL');
+  $honey = new HoneyMYSQL();
+  if($honey->insert('user', array('login','password'),array('admin','1234'))){
+    echo 'Success';
+  }else{
+    echo 'Failure';
+  }
+
+?>
+```
