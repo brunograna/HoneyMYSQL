@@ -20,7 +20,7 @@ public function __construct() {
 ```
 After that the HoneyMYSQL LIB is configured.
 
-##INSERT Example
+## Insert Data Example
 
 ```
 <?php
