@@ -18,15 +18,17 @@ public function __construct() {
   $this->setDatabase("DatabaseName");
 }
 ```
-After that the HoneyMYSQL library is configured.
+After that the HoneyMYSQL library is configured.To instance the object just do it:
+```
+  require_once('HoneyMYSQL');
+  $honey = new HoneyMYSQL();
+```
 
 ## Insert Data Example
 
 Insert data in database.
 
-```
-  require_once('HoneyMYSQL');
-  $honey = new HoneyMYSQL();
+```  
   $honey->insert('tablename', array( 'field1', 'field2' ),array( 'value1', 'value2' ));
 ```
 
@@ -34,8 +36,6 @@ Insert data in database.
 
 Insert unique data in database. If the data exist, the function returns 0.
 
-```
-  require_once('HoneyMYSQL');
-  $honey = new HoneyMYSQL();
+```  
   $honey->insert_nr('tablename', array( 'field1', 'field2' ),array( 'value1', 'value2' ));
 ```
