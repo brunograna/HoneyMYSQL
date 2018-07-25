@@ -172,15 +172,15 @@ class HoneyMYSQL{
     }
 
     /**
-     * This functions select all the data from a MYSQL database
+     * This functions select the data from a MYSQL database with a condition
      * 
-     * Select_all - Should pass ($tablename, $attributes, $values)  
+     * Select_all - Should pass ($tablename, $attributes, $condition)  
      * 
      * $tablename - Name of the table.
      * 
      * $attributes - Array with the attributes name.
      * 
-     * $values - Array with values of the attributes.    
+     * $condition - An String with one condition.    
      * 
      * * Return array with the results in case of success
      * 
@@ -190,7 +190,7 @@ class HoneyMYSQL{
      * 
      * * The values should be in the same sequence of the attributes name  
      */ 
-    public function select(String $tablename,array $attributes,String $clause ){        
+    public function select(String $tablename,array $attributes,String $condition ){        
         if ($this->connect->conectar()) {
             //Connected with database   
             //Here the SELECT query are made
@@ -203,7 +203,7 @@ class HoneyMYSQL{
                     $sql = $sql."`".$value."`, ";
                 }                
             }  
-            $sql = $sql." FROM `".$tablename."` WHERE ".$clause;  
+            $sql = $sql." FROM `".$tablename."` WHERE ".$condition;  
                   
             //Verify with exist this data on database 
             $result = $this->connect->getConn()->query($sql);
