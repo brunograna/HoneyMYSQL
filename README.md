@@ -18,7 +18,7 @@ public function __construct() {
   $this->setDatabase("DatabaseName");
 }
 ```
-After that the HoneyMYSQL library is configured. To instance the object just do it:
+After that the HoneyMYSQL library is configured. To instantiate the object just do it:
 ```
   require_once('HoneyMYSQL');
   $honey = new HoneyMYSQL();
