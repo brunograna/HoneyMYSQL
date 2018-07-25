@@ -2,7 +2,7 @@
 A PHP Library that helps to make CRUD (Create, Read, Update and Delete) system with one line using MYSQL databases.'
 
 ## Getting Started
-To configure HoneyMYSQL you just need to know this settings:
+To configure HoneyMYSQL you just need to know this server settings:
 * Servername
 * Username
 * Password
@@ -13,8 +13,8 @@ After knowing that you just have to put all these information in the __construct
 ```
 public function __construct() {
   $this->setServername("localhost");
-  $this->setUsername("Username");
-  $this->setPassword("Password");
+  $this->setUsername("root");
+  $this->setPassword("");
   $this->setDatabase("DatabaseName");
 }
 ```
@@ -25,5 +25,5 @@ After that the HoneyMYSQL library is configured.
 ```
   require_once('HoneyMYSQL');
   $honey = new HoneyMYSQL();
-  $honey->insert('user', array('login','password'),array('admin','1234'));
+  $honey->insert('tablename', array('login','password'),array('admin','1234'));
 ```
