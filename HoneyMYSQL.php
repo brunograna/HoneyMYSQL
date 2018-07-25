@@ -68,7 +68,7 @@ class HoneyMYSQL{
                 } 
             }
             
-            $sql = $sql." )";            
+            $sql = $sql." ) ";                     
             //Try to realize the query
             if ($this->connect->getConn()->query($sql) === TRUE) {
                 //Query was made with success                
@@ -190,23 +190,24 @@ class HoneyMYSQL{
      * 
      * * The values should be in the same sequence of the attributes name  
      */ 
-    public function select_all(String $tablename,array $attributes,array $values):array{        
+    public function select(String $tablename,array $attributes,String $clause ){        
         if ($this->connect->conectar()) {
             //Connected with database   
             //Here the SELECT query are made
-            $sql = "SELECT * FROM `".$tablename."` WHERE ";                          
-            //Mount the values of the attributes
-            foreach ($values as $key => $value) {                
+            $sql = "SELECT ";          
+            //Mount the attributes
+            foreach ($attributes as $key => $value) {                
                 if($key == count($attributes) - 1){
-                    $sql = $sql." `".$attributes[$key]."` = '".$value."'";
+                    $sql = $sql."`".$value."`";
                 }else{
-                    $sql = $sql." `".$attributes[$key]."` = '".$value."' and";
-                } 
-            }
-            $sql = $sql." ";       
+                    $sql = $sql."`".$value."`, ";
+                }                
+            }  
+            $sql = $sql." FROM `".$tablename."` WHERE ".$clause;  
+                  
             //Verify with exist this data on database 
             $result = $this->connect->getConn()->query($sql);
-            echo $sql;
+            //echo $sql;            
             if ($result->num_rows > 0) {
                 //Fill the array
                 while ($row = $result->fetch_assoc()) {
@@ -215,10 +216,12 @@ class HoneyMYSQL{
                 }
                 return $array;
             }else{
-                return array(0);
+                echo '<br/><b>Not Found</b><br/>';
+                return array(0);                
             }
-        }else{
+        }else{            
             return array(0);
+            
         }
     }
 
