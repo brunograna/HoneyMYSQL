@@ -25,5 +25,5 @@ After that the HoneyMYSQL library is configured.
 ```
   require_once('HoneyMYSQL');
   $honey = new HoneyMYSQL();
-  $honey->insert('tablename', array('field1','field2'),array('value1','value2'));
+  $honey->insert('tablename', array( 'field1', 'field2' ),array( 'value1', 'value2' ));
 ```
