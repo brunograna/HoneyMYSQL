@@ -1,4 +1,4 @@
-# HoneyMYSQL a PHP Library
+# HoneyMYSQL a PHP Library (under development)
 A PHP Library that helps to make CRUD (Create, Read, Update and Delete) system with one line using MYSQL databases.'
 
 ## Getting Started
