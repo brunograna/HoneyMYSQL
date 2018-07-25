@@ -172,25 +172,20 @@ class HoneyMYSQL{
     }
 
     /**
-<<<<<<< HEAD
      * This functions select the data from a MYSQL database with a condition
      * 
      * Select_all - Should pass ($tablename, $attributes, $condition)  
-=======
      * This functions select all the data from a MYSQL database
      * 
      * Select_all - Should pass ($tablename, $attributes, $values)  
->>>>>>> 5fb31e52e9373f9d713d3f5ff711a6457d4423e2
      * 
      * $tablename - Name of the table.
      * 
      * $attributes - Array with the attributes name.
      * 
-<<<<<<< HEAD
-     * $condition - An String with one condition.    
-=======
-     * $values - Array with values of the attributes.    
->>>>>>> 5fb31e52e9373f9d713d3f5ff711a6457d4423e2
+     * $condition - An String with one condition.      
+     *
+     * $values - Array with values of the attributes.   
      * 
      * * Return array with the results in case of success
      * 
@@ -200,11 +195,11 @@ class HoneyMYSQL{
      * 
      * * The values should be in the same sequence of the attributes name  
      */ 
-<<<<<<< HEAD
+
     public function select(String $tablename,array $attributes,String $condition ){        
-=======
+
     public function select(String $tablename,array $attributes,String $clause ){        
->>>>>>> 5fb31e52e9373f9d713d3f5ff711a6457d4423e2
+
         if ($this->connect->conectar()) {
             //Connected with database   
             //Here the SELECT query are made
@@ -217,11 +212,10 @@ class HoneyMYSQL{
                     $sql = $sql."`".$value."`, ";
                 }                
             }  
-<<<<<<< HEAD
+
             $sql = $sql." FROM `".$tablename."` WHERE ".$condition;  
-=======
+
             $sql = $sql." FROM `".$tablename."` WHERE ".$clause;  
->>>>>>> 5fb31e52e9373f9d713d3f5ff711a6457d4423e2
                   
             //Verify with exist this data on database 
             $result = $this->connect->getConn()->query($sql);
