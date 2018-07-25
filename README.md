@@ -22,8 +22,20 @@ After that the HoneyMYSQL library is configured.
 
 ## Insert Data Example
 
+Insert data in database.
+
 ```
   require_once('HoneyMYSQL');
   $honey = new HoneyMYSQL();
   $honey->insert('tablename', array( 'field1', 'field2' ),array( 'value1', 'value2' ));
+```
+
+## Insert not repeated Data Example
+
+Insert unique data in database. If the data exist, the function returns 0.
+
+```
+  require_once('HoneyMYSQL');
+  $honey = new HoneyMYSQL();
+  $honey->insert_nr('tablename', array( 'field1', 'field2' ),array( 'value1', 'value2' ));
 ```
