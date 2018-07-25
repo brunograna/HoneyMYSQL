@@ -30,7 +30,7 @@ Insert data in database.
   $honey->insert('tablename', array( 'field1', 'field2' ),array( 'value1', 'value2' ));
 ```
 
-## Insert not repeated Data Example
+## Insert Not Repeated Data Example
 
 Insert unique data in database. If the data exist, the function returns 0.
 
