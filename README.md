@@ -39,3 +39,13 @@ Insert unique data in database. If the data exist, the function returns 0.
 ```  
   $honey->insert_nr('tablename', array( 'field1', 'field2' ),array( 'value1', 'value2' ));
 ```
+## Select Data Example
+
+Select data from database using a condition.
+To select all data use '1' as condition.
+
+```  
+  $condition = " id = '1' ";
+  $honey->select('tablename',array('field1','field2'),$condition);
+```
+
